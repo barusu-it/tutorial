@@ -1,0 +1,11 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile(project(':spring-boot-commons'))
+
+    compile 'org.springframework.boot:spring-boot-starter-tomcat'
+}
+
+springBoot {
+    mainClassName = "it.barusu.tutorial.springbootcommons.App"
+}

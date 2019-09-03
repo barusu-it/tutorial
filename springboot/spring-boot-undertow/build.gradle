@@ -1,0 +1,10 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile(project(':spring-boot-commons'))
+    compile 'org.springframework.boot:spring-boot-starter-undertow'
+}
+
+springBoot {
+    mainClassName = "it.barusu.tutorial.springbootcommons.App"
+}
