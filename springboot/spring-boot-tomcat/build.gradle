@@ -7,5 +7,5 @@ dependencies {
 }
 
 springBoot {
-    mainClassName = "it.barusu.tutorial.springbootcommons.App"
+    mainClassName = "it.barusu.tutorial.springboot.App"
 }

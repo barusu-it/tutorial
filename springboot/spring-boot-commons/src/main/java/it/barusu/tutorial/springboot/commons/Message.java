@@ -1,4 +1,4 @@
-package it.barusu.tutorial.springbootcommons;
+package it.barusu.tutorial.springboot.commons;
 
 public class Message {
 
