@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'it.barusu'
+version '1.0-SNAPSHOT'
+
+allprojects {
+
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+
+}
