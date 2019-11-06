@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    username: user_acct
+    password: "!@#Qaz"
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql-dev-base.yeshj.com:3306/hj_parcel?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+flyway:
+  enabled: true
+  baseline-on-migrate: true

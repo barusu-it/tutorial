@@ -4,4 +4,5 @@ include 'spring-boot-undertow'
 include 'spring-boot-tomcat'
 include 'spring-boot-commons'
 include 'spring-boot-http2'
+include 'spring-boot-flyway'
 
