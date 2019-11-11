@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <jdbc>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://mysql-dev-base.yeshj.com:3306/hj_parcel?useSSL=false</url>
+        <user>user_acct</user>
+        <password>!@#Qaz</password>
+    </jdbc>
+    <generator>
+        <name>org.jooq.codegen.JavaGenerator</name>
+        <database>
+            <syntheticPrimaryKeys>public\..*\.id</syntheticPrimaryKeys>
+            <overridePrimaryKeys>override_primary_key</overridePrimaryKeys>
+            <name>org.jooq.meta.mysql.MySQLDatabase</name>
+            <includes>.*</includes>
+            <inputSchema>hj_parcel</inputSchema>
+        </database>
+        <generate>
+            <daos>true</daos>
+            <pojos>true</pojos>
+            <javaTimeTypes>true</javaTimeTypes>
+            <springAnnotations>false</springAnnotations>
+        </generate>
+        <target>
+            <packageName>com.github.parcel.sample.jooq.generator</packageName>
+            <directory>src/main/java</directory>
+        </target>
+
+    </generator>
+</configuration>

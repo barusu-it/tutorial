@@ -3,6 +3,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.1.7.RELEASE' apply false
     id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
+    id 'nu.studer.jooq' version '3.0.3' apply false
 }
 
 group 'it.barusu'

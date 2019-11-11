@@ -1,0 +1,103 @@
+apply plugin: 'nu.studer.jooq'
+
+ext.jooqVersion = '3.12.3'
+
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    compile "org.jooq:jooq:$jooqVersion"
+    compile "org.jooq:jooq-codegen:$jooqVersion"
+    compile "org.jooq:jooq-meta:$jooqVersion"
+    compile "org.jooq:jooq-meta-extensions:$jooqVersion"
+
+    compile 'com.zaxxer:HikariCP'
+    compile 'mysql:mysql-connector-java'
+    jooqRuntime 'mysql:mysql-connector-java'
+
+    compile 'org.springframework.boot:spring-boot-starter-jooq'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jooq {
+    version = '3.12.3'
+    edition = 'OSS'
+    sample(sourceSets.main) {
+        jdbc {
+            driver = 'com.mysql.cj.jdbc.Driver'
+            url = 'jdbc:mysql://mysql-dev-base.yeshj.com:3306/hj_parcel?useSSL=false'
+            user = 'user_acct'
+            password = '!@#Qaz'
+        }
+        generator {
+            name = 'org.jooq.codegen.DefaultGenerator'
+//            strategy {
+//                name = 'nu.studer.sample.SampleGeneratorStrategy'
+//            }
+            database {
+                syntheticPrimaryKeys = 'public\\..*\\.id'
+                overridePrimaryKeys = 'override_primary_key'
+                name = 'org.jooq.meta.mysql.MySQLDatabase'
+                includes = '.*'
+                inputSchema = 'hj_parcel'
+            }
+            generate {
+                pojos = true
+                daos = true
+                javaTimeTypes = true
+                springAnnotations = false
+            }
+            target {
+                packageName = 'it.barusu.tutorial.jooq.generator'
+                directory = 'src/main/java'
+            }
+        }
+    }
+
+}
+
+// Use your favourite XML builder to construct the code generation configuration file
+// ----------------------------------------------------------------------------------
+//def writer = new StringWriter()
+//def xml = new groovy.xml.MarkupBuilder(writer)
+//        .configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.11.0.xsd') {
+//            jdbc() {
+//                driver('com.mysql.cj.jdbc.Driver')
+//                url('jdbc:mysql://mysql-dev-base.yeshj.com:3306/hj_parcel?useSSL=false')
+//                user('user_acct')
+//                password('!@#Qaz')
+//            }
+//            generator() {
+//                database() {
+//                    syntheticPrimaryKeys 'public\\..*\\.id'
+//                    overridePrimaryKeys 'override_primary_key'
+//                    name 'org.jooq.meta.mysql.MySQLDatabase'
+//                    includes '.*'
+//                    inputSchema 'hj_parcel'
+//                }
+//
+//                // Watch out for this caveat when using MarkupBuilder with "reserved names"
+//                // - https://github.com/jOOQ/jOOQ/issues/4797
+//                // - http://stackoverflow.com/a/11389034/521799
+//                // - https://groups.google.com/forum/#!topic/jooq-user/wi4S9rRxk4A
+//                generate([:]) {
+//                    pojos true
+//                    daos true
+//                    javaTimeTypes true
+//                    springAnnotations false
+//                }
+//                target() {
+//                    packageName('it.barusu.tutorial.jooq.generator')
+//                    directory('src/main/java')
+//                }
+//            }
+//        }
+//
+//// Run the code generator
+//// ----------------------
+//org.jooq.codegen.GenerationTool.generate(writer.toString())

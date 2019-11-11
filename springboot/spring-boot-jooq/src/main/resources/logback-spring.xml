@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <!--<conversionRule conversionWord="LIP" converterClass="com.github.brevy.data.commons.log.IpLogConverter"/>-->
+
+    <!--<property name="appId" value="credit-instalment-app"/>-->
+    <!--<property name="defaultMaxHistory" value="30"/>-->
+    <!--<property name="defaultMaxFileSize" value="50MB"/>-->
+    <!--<property name="log.home" value="${appLogHome:-/home}"/>-->
+    <!--<property name="log.base" value="${log.home}/logs/${appId}"/>-->
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%date %clr(%-5level) [%magenta(%LIP),%blue(%X{X-B3-TraceId:&#45;&#45;})] %clr(&#45;&#45;&#45;) [%clr(%t){faint}] %cyan(%logger{80}:%line) :%msg%n"/>
+    <property name="CONSOLE_LOG_PATTERN_NOT_SUPPORT_ANSI_COLOR"
+              value="%date %clr(%-5level) [%LIP,%X{X-B3-TraceId:--}] &#45;-- [%t] %logger{80} :%msg%n"/>
+
+    <property name="FILE_PATTERN"
+              value="%date %-5level [%LIP],%X{X-B3-TraceId:&#45;&#45;}] &#45;&#45;&#45; [%t] %logger{80} :%msg%n"/>
+    <property name="LOGSTASH_LOG_PATTERN"
+              value="[%level] [%date{ISO8601}] [%logger] [%thread] [%c] [%X{X-B3-TraceId:-#}] [%LIP] %msg%n"/>
+
+    <property name="SIMPLE_LOG_PATTERN" value="%date %level [%thread] %logger{10} [%file:%line] %msg%n"/>
+
+    <appender name="ROOT_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>${SIMPLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.jooq" level="debug" additivity="false">
+        <appender-ref ref="ROOT_CONSOLE"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="ROOT_CONSOLE"/>
+    </root>
+
+
+</configuration>

@@ -5,4 +5,5 @@ include 'spring-boot-tomcat'
 include 'spring-boot-commons'
 include 'spring-boot-http2'
 include 'spring-boot-flyway'
+include 'spring-boot-jooq'
 
