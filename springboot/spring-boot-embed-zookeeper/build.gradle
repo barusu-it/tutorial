@@ -1,0 +1,13 @@
+
+ext.curatorVersion = '4.2.0'
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    testCompile "org.apache.curator:curator-test:$curatorVersion"
+    testCompile 'junit:junit'
+    testCompile 'ch.qos.logback:logback-classic'
+}

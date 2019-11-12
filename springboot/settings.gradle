@@ -6,4 +6,5 @@ include 'spring-boot-commons'
 include 'spring-boot-http2'
 include 'spring-boot-flyway'
 include 'spring-boot-jooq'
+include 'spring-boot-embed-zookeeper'
 
