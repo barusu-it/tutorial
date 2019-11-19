@@ -1,0 +1,23 @@
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator-admin
+      exposure:
+        include:
+          - info
+          - health
+          - httptrace
+
+spring:
+  http-logging:
+    enabled: true
+    include-request-payload: true
+    include-client-info: true
+    include-headers: true
+    include-query-string: true
+    include-response-payload: true
+    max-request-payload-length: 50
+    max-response-payload-length: 50
+    included-header:
+      - Content-Type
