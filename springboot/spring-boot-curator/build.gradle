@@ -1,0 +1,14 @@
+
+ext.curatorVersion = '4.2.0'
+ext.commonsIoVeresion = '2.6'
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    compile "commons-io:commons-io:${commonsIoVeresion}"
+    compile "org.apache.curator:curator-recipes:${curatorVersion}"
+
+}

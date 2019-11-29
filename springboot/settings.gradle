@@ -9,4 +9,5 @@ include 'spring-boot-jooq'
 include 'spring-boot-embed-zookeeper'
 include 'spring-boot-devtools'
 include 'spring-boot-actuator'
+include 'spring-boot-curator'
 
