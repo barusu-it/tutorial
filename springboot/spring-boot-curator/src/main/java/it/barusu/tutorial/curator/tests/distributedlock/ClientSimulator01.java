@@ -27,6 +27,9 @@ public class ClientSimulator01 {
 
         SimulatorHelper.buildRootPathIfNotExisted(curator);
 
+        // create ephemeral node by old version curator
+//        PersistentEphemeralNode ephemeralNode = new PersistentEphemeralNode(curator,
+//                PersistentEphemeralNode.Mode.PROTECTED_EPHEMERAL_SEQUENTIAL, LOCK_PATH, "0".getBytes());
         PersistentNode ephemeralNode = new PersistentNode(curator,
                 CreateMode.EPHEMERAL_SEQUENTIAL, true, LOCK_PATH, "0".getBytes());
         ephemeralNode.start();
