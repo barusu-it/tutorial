@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+ext.scalaBinaryVersion = '2.11'
+
+group 'it.barusu'
+version '1.9.1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${project.version}"
+    compile "org.apache.flink:flink-streaming-scala_${scalaBinaryVersion}:${project.version}"
+    compile "org.apache.flink:flink-connector-twitter_${scalaBinaryVersion}:${project.version}"
+    compile "org.apache.flink:flink-connector-kafka-0.10_${scalaBinaryVersion}:${project.version}"
+    compile "org.apache.flink:flink-shaded-jackson:${project.version}"
+    testCompile "org.apache.flink:flink-test-utils_${scalaBinaryVersion}:${project.version}"
+    testCompile "org.apache.flink:flink-statebackend-rocksdb_${scalaBinaryVersion}:${project.version}"
+    testCompile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${project.version}"
+}
