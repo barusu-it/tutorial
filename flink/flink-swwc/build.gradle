@@ -1,0 +1,11 @@
+
+dependencies {
+    compile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}"
+    compile "org.apache.flink:flink-streaming-scala_${scalaBinaryVersion}"
+    compile "org.apache.flink:flink-connector-twitter_${scalaBinaryVersion}"
+    compile "org.apache.flink:flink-connector-kafka-0.10_${scalaBinaryVersion}"
+    compile "org.apache.flink:flink-shaded-jackson"
+    testCompile "org.apache.flink:flink-test-utils_${scalaBinaryVersion}"
+    testCompile "org.apache.flink:flink-statebackend-rocksdb_${scalaBinaryVersion}"
+    testCompile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}"
+}

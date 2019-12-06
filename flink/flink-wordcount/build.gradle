@@ -1,0 +1,8 @@
+
+dependencies {
+    compile "org.apache.flink:flink-java"
+    compile "org.apache.flink:flink-scala_${scalaBinaryVersion}"
+    compile "org.apache.flink:flink-clients_${scalaBinaryVersion}"
+
+    compile 'ch.qos.logback:logback-classic'
+}

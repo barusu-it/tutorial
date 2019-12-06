@@ -1,25 +1,43 @@
 plugins {
     id 'java'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
 }
-
-ext.scalaBinaryVersion = '2.11'
 
 group 'it.barusu'
-version '1.9.1'
+version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
 
-repositories {
-    mavenCentral()
-}
+    ext.scalaBinaryVersion = '2.11'
+    ext.flinkVersion = '1.9.1'
+    ext.logbackVersion = '1.2.3'
 
-dependencies {
-    compile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${project.version}"
-    compile "org.apache.flink:flink-streaming-scala_${scalaBinaryVersion}:${project.version}"
-    compile "org.apache.flink:flink-connector-twitter_${scalaBinaryVersion}:${project.version}"
-    compile "org.apache.flink:flink-connector-kafka-0.10_${scalaBinaryVersion}:${project.version}"
-    compile "org.apache.flink:flink-shaded-jackson:${project.version}"
-    testCompile "org.apache.flink:flink-test-utils_${scalaBinaryVersion}:${project.version}"
-    testCompile "org.apache.flink:flink-statebackend-rocksdb_${scalaBinaryVersion}:${project.version}"
-    testCompile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${project.version}"
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.apache.flink:flink-parent:${flinkVersion}"
+        }
+        dependencies {
+            dependency "org.apache.flink:flink-java:${flinkVersion}"
+            dependency "org.apache.flink:flink-scala_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-clients_${scalaBinaryVersion}:${flinkVersion}"
+
+            dependency "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-streaming-scala_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-connector-twitter_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-connector-kafka-0.10_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-test-utils_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-statebackend-rocksdb_${scalaBinaryVersion}:${flinkVersion}"
+            dependency "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkVersion}"
+
+            dependency "ch.qos.logback:logback-classic:${logbackVersion}"
+        }
+    }
 }
