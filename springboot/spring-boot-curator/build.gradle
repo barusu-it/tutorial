@@ -1,5 +1,5 @@
 
-ext.curatorVersion = '4.2.0'
+ext.curatorVersion = '2.13.0'
 ext.commonsIoVeresion = '2.6'
 
 dependencies {
@@ -9,6 +9,12 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
 
     compile "commons-io:commons-io:${commonsIoVeresion}"
-    compile "org.apache.curator:curator-recipes:${curatorVersion}"
+    compile("org.apache.curator:curator-recipes:${curatorVersion}") {
+        exclude module: 'log4j'
+    }
+
+    compile 'ch.qos.logback:logback-classic'
+
+
 
 }
