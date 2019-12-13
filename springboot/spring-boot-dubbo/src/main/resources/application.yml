@@ -1,0 +1,33 @@
+
+
+
+
+
+---
+spring:
+  profiles: srva
+  application:
+    name: boot-dubbo-srva
+
+server:
+  port: 9011
+
+---
+spring:
+  profiles: srvb
+  application:
+    name: boot-dubbo-srva
+
+server:
+  port: 9012
+
+---
+spring:
+  profiles: srvc
+  application:
+    name: boot-dubbo-srva
+
+server:
+  port: 9013
+
+

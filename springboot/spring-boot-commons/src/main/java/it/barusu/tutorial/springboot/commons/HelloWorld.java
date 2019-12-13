@@ -1,10 +1,7 @@
 package it.barusu.tutorial.springboot.commons;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWorld {
@@ -13,6 +10,13 @@ public class HelloWorld {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Message json() {
         return new Message("Hello, World!");
+    }
+
+    @PostMapping(path = "/hello",
+            produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Message hello(@RequestBody User user) {
+        return new Message("Hello, World! " + user.getName());
     }
 
     @GetMapping(path = "/plaintext",

@@ -1,0 +1,28 @@
+
+ext.dubboVersion = '2.5.3'
+ext.zkclientVersion = '0.10'
+
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile("com.101tec:zkclient:${zkclientVersion}") {
+        exclude module: 'slf4j-log4j12'
+        exclude module: 'log4j'
+    }
+    compile("com.alibaba:dubbo:${dubboVersion}") {
+        exclude module: 'spring'
+        exclude module: 'log4j'
+    }
+
+    compile 'ch.qos.logback:logback-classic'
+    compile 'org.slf4j:log4j-over-slf4j'
+    compile 'org.slf4j:jcl-over-slf4j'
+    compile 'org.slf4j:jul-to-slf4j'
+
+    testCompile "junit:junit"
+}

@@ -1,0 +1,2 @@
+dubboServiceTraceFilter=it.barusu.tutorial.dubbo.DubboServiceTraceFilter
+dubboClientTraceFilter=it.barusu.tutorial.dubbo.DubboClientTraceFilter

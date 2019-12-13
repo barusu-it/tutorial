@@ -11,4 +11,5 @@ include 'spring-boot-devtools'
 include 'spring-boot-actuator'
 include 'spring-boot-curator'
 include 'spring-boot-kafka'
+include 'spring-boot-dubbo'
 

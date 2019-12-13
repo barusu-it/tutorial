@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+>
+
+
+    <dubbo:application name="${spring.application.name}"/>
+    <dubbo:registry protocol="zookeeper" client="zkclient" address="zk1-qa.yeshj.com:2181" group="tutorial-boot-dubbo"/>
+    <dubbo:protocol name="dubbo" port="2${server.port}"/>
+    <dubbo:provider retries="3" timeout="3000" validation="false" filter="dubboServiceTraceFilter"/>
+    <dubbo:consumer retries="3" timeout="3000" check="false" filter="dubboClientTraceFilter"/>
+
+    <beans profile="srva">
+        <dubbo:reference interface="it.barusu.tutorial.dubbo.ServiceBEndpoint" id="serviceBEndpoint"/>
+    </beans>
+
+    <beans profile="srvb">
+        <bean id="serviceBEndpointImpl" class="it.barusu.tutorial.dubbo.ServiceBEndpointImpl">
+            <constructor-arg index="0" ref="serviceCEndpoint"/>
+        </bean>
+        <dubbo:reference interface="it.barusu.tutorial.dubbo.ServiceCEndpoint" id="serviceCEndpoint"/>
+        <dubbo:service interface="it.barusu.tutorial.dubbo.ServiceBEndpoint" ref="serviceBEndpointImpl"/>
+    </beans>
+
+    <beans profile="srvc">
+        <bean id="serviceBEndpointImpl" class="it.barusu.tutorial.dubbo.ServiceBEndpointImpl">
+            <constructor-arg index="0">
+                <null/>
+            </constructor-arg>
+        </bean>
+        <bean id="serviceCEndpointImpl" class="it.barusu.tutorial.dubbo.ServiceCEndpointImpl"/>
+
+        <dubbo:service interface="it.barusu.tutorial.dubbo.ServiceCEndpoint" ref="serviceCEndpointImpl"/>
+    </beans>
+
+
+</beans>
