@@ -12,4 +12,7 @@ include 'spring-boot-actuator'
 include 'spring-boot-curator'
 include 'spring-boot-kafka'
 include 'spring-boot-dubbo'
+include 'spring-boot-dubbo-srva'
+include 'spring-boot-dubbo-srvb'
+include 'spring-boot-dubbo-srvc'
 

@@ -15,26 +15,20 @@
     <dubbo:consumer retries="3" timeout="3000" check="false" filter="dubboClientTraceFilter"/>
 
     <beans profile="srva">
-        <dubbo:reference interface="it.barusu.tutorial.dubbo.ServiceBEndpoint" id="serviceBEndpoint"/>
+        <dubbo:reference interface="it.barusu.tutorial.dubbo.commons.RpcServiceBEndpoint" id="rpcServiceBEndpoint"/>
     </beans>
 
     <beans profile="srvb">
-        <bean id="serviceBEndpointImpl" class="it.barusu.tutorial.dubbo.ServiceBEndpointImpl">
-            <constructor-arg index="0" ref="serviceCEndpoint"/>
+        <bean id="rpcServiceBEndpointImpl" class="it.barusu.tutorial.dubbo.srvb.RpcServiceBEndpointImpl">
+            <constructor-arg index="0" ref="rpcServiceCEndpoint"/>
         </bean>
-        <dubbo:reference interface="it.barusu.tutorial.dubbo.ServiceCEndpoint" id="serviceCEndpoint"/>
-        <dubbo:service interface="it.barusu.tutorial.dubbo.ServiceBEndpoint" ref="serviceBEndpointImpl"/>
+        <dubbo:reference interface="it.barusu.tutorial.dubbo.commons.RpcServiceCEndpoint" id="rpcServiceCEndpoint"/>
+        <dubbo:service interface="it.barusu.tutorial.dubbo.commons.RpcServiceBEndpoint" ref="rpcServiceBEndpointImpl"/>
     </beans>
 
     <beans profile="srvc">
-        <bean id="serviceBEndpointImpl" class="it.barusu.tutorial.dubbo.ServiceBEndpointImpl">
-            <constructor-arg index="0">
-                <null/>
-            </constructor-arg>
-        </bean>
-        <bean id="serviceCEndpointImpl" class="it.barusu.tutorial.dubbo.ServiceCEndpointImpl"/>
-
-        <dubbo:service interface="it.barusu.tutorial.dubbo.ServiceCEndpoint" ref="serviceCEndpointImpl"/>
+        <bean id="rpcServiceCEndpointImpl" class="it.barusu.tutorial.dubbo.srvc.RpcServiceCEndpointImpl"/>
+        <dubbo:service interface="it.barusu.tutorial.dubbo.commons.RpcServiceCEndpoint" ref="rpcServiceCEndpointImpl"/>
     </beans>
 
 

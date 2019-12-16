@@ -1,7 +1,13 @@
 
 
+resteasy:
+  jaxrs:
+    app:
+      registeration: property
+      classes: it.barusu.tutorial.dubbo.commons.JaxrsApplication
 
-
+base-url:
+  service-b: http://localhost:9012/resteasy-api
 
 ---
 spring:
@@ -29,5 +35,4 @@ spring:
 
 server:
   port: 9013
-
 

@@ -1,6 +1,7 @@
 
 ext.dubboVersion = '2.5.3'
 ext.zkclientVersion = '0.10'
+ext.resteasyVersion = '3.6.2.Final'
 
 dependencies {
 
@@ -19,10 +20,19 @@ dependencies {
         exclude module: 'log4j'
     }
 
+    compile 'org.apache.skywalking:apm-toolkit-logback-1.x:6.5.0'
+
     compile 'ch.qos.logback:logback-classic'
     compile 'org.slf4j:log4j-over-slf4j'
     compile 'org.slf4j:jcl-over-slf4j'
     compile 'org.slf4j:jul-to-slf4j'
+
+    compile 'javax.validation:validation-api'
+    compile 'org.hibernate.validator:hibernate-validator'
+
+    compile "org.jboss.resteasy:resteasy-spring-boot-starter:3.0.0.Final"
+    compile "org.jboss.resteasy:resteasy-validator-provider-11:${resteasyVersion}"
+    compile 'javax.ws.rs:javax.ws.rs-api:2.1'
 
     testCompile "junit:junit"
 }

@@ -1,4 +1,4 @@
-package it.barusu.tutorial.dubbo;
+package it.barusu.tutorial.dubbo.commons;
 
 import lombok.extern.slf4j.Slf4j;
 

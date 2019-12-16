@@ -1,2 +1,2 @@
-dubboServiceTraceFilter=it.barusu.tutorial.dubbo.DubboServiceTraceFilter
-dubboClientTraceFilter=it.barusu.tutorial.dubbo.DubboClientTraceFilter
+dubboServiceTraceFilter=it.barusu.tutorial.dubbo.commons.DubboServiceTraceFilter
+dubboClientTraceFilter=it.barusu.tutorial.dubbo.commons.DubboClientTraceFilter

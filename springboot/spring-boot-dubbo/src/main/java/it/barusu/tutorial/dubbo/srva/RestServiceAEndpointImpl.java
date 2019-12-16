@@ -1,7 +1,7 @@
-package it.barusu.tutorial.dubbo.endpoint;
+package it.barusu.tutorial.dubbo.srva;
 
-import it.barusu.tutorial.dubbo.ServiceBEndpoint;
-import it.barusu.tutorial.dubbo.UserRequest;
+import it.barusu.tutorial.dubbo.commons.RpcServiceBEndpoint;
+import it.barusu.tutorial.dubbo.commons.UserRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,20 +17,20 @@ import java.util.Map;
 @Slf4j
 @Controller
 @RequestMapping("/say")
-public class ServiceAEndpoint {
+public class RestServiceAEndpointImpl {
 
-    private ServiceBEndpoint serviceBEndpoint;
+    private RpcServiceBEndpoint rpcServiceBEndpoint;
 
     @Autowired
-    public ServiceAEndpoint(ServiceBEndpoint serviceBEndpoint) {
-        this.serviceBEndpoint = serviceBEndpoint;
+    public RestServiceAEndpointImpl(RpcServiceBEndpoint rpcServiceBEndpoint) {
+        this.rpcServiceBEndpoint = rpcServiceBEndpoint;
     }
 
     @RequestMapping(value = "/hi", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, String> hi(@RequestBody UserRequest request) {
         log.info("rest request [hi]: {}", request);
-        String word = serviceBEndpoint.sayHi(request);
+        String word = rpcServiceBEndpoint.sayHi(request);
         Map<String, String> responseMap = new HashMap<>();
         responseMap.put("word", word);
 
