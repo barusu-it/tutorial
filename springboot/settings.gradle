@@ -15,4 +15,5 @@ include 'spring-boot-dubbo'
 include 'spring-boot-dubbo-srva'
 include 'spring-boot-dubbo-srvb'
 include 'spring-boot-dubbo-srvc'
+include 'spring-boot-not-eligible'
 
