@@ -1,4 +1,5 @@
 rootProject.name = 'flink'
 include 'flink-swwc'
 include 'flink-wordcount'
+include 'flink-custom-csv'
 

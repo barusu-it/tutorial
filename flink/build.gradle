@@ -13,6 +13,7 @@ allprojects {
     ext.scalaBinaryVersion = '2.11'
     ext.flinkVersion = '1.9.1'
     ext.logbackVersion = '1.2.3'
+    ext.lombokVersion = '1.18.10'
 
     sourceCompatibility = 1.8
 
@@ -28,6 +29,8 @@ allprojects {
             dependency "org.apache.flink:flink-java:${flinkVersion}"
             dependency "org.apache.flink:flink-scala_${scalaBinaryVersion}:${flinkVersion}"
             dependency "org.apache.flink:flink-clients_${scalaBinaryVersion}:${flinkVersion}"
+
+            dependency "org.projectlombok:lombok:${lombokVersion}"
 
             dependency "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkVersion}"
             dependency "org.apache.flink:flink-streaming-scala_${scalaBinaryVersion}:${flinkVersion}"
